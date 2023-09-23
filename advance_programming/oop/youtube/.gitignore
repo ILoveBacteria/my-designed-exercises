@@ -1,0 +1,10 @@
+# intellij
+.idea/
+out/
+*.iml
+lib/
+
+# tests
+queraTest/
+solution/
+src/*Test.java
