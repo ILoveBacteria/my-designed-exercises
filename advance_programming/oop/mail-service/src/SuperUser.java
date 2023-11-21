@@ -14,6 +14,8 @@ public class SuperUser implements User {
     
     @Override
     public List<Mail> inbox() {
-        return MailService.getObject().getAllMails();
+        List<Mail> mailList = MailService.getObject().getAllMails();
+        mailList.stream().filter(x -> x.getReceiver() == this).forEach(x -> x.setRead(true));
+        return mailList;
     }
 }

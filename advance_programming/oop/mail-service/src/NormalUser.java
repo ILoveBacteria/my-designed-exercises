@@ -23,6 +23,8 @@ public class NormalUser implements User {
     
     @Override
     public List<Mail> inbox() {
-        return MailService.getObject().getUserMails(this);
+        List<Mail> mailList = MailService.getObject().getUserMails(this);
+        mailList.forEach(x -> x.setRead(true));
+        return mailList;
     }
 }
