@@ -1,12 +1,12 @@
 import java.io.File;
 import java.nio.file.Path;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class FileOrganizer {
     private static final List<String> known = Arrays.asList("jpg", "mp4", "mp3");
+    
+    private FileOrganizer() {}
     
     public static void removeUnknownExtensions(Path path) {
         for (File file : path.toFile().listFiles()) {
