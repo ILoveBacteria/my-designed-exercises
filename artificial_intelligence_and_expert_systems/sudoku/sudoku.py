@@ -1,5 +1,8 @@
+import ast
+
+
 class Variable:
-    def __init__(self, row: int, column: int, domain: list, value: int | None):
+    def __init__(self, row: int, column: int, domain: list, value):
         self.row = row
         self.column = column
         self.domain = domain
@@ -10,44 +13,6 @@ class Variable:
 
     def __hash__(self) -> int:
         return hash((self.row, self.column))
-
-
-# grid = [
-#     [2, 3, 0, 4],
-#     [1, 0, 0, 0],
-#     [0, 0, 0, 3],
-#     [0, 0, 4, 0],
-# ]
-
-# grid = [
-#     [0, 0, 0, 4, 0],
-#     [2, 0, 3, 0, 1],
-#     [5, 0, 0, 0, 3],
-#     [0, 2, 0, 0, 0],
-#     [4, 0, 0, 0, 0],
-# ]
-
-grid = [
-    [0, 0, 0, 0, 0, 1, 3],
-    [0, 0, 2, 4, 0, 7, 0],
-    [0, 1, 5, 0, 0, 0, 0],
-    [2, 0, 0, 6, 3, 0, 0],
-    [0, 2, 0, 0, 0, 5, 0],
-    [6, 0, 0, 0, 7, 0, 0],
-    [0, 0, 4, 0, 6, 0, 1],
-]
-
-# grid = [
-#     [0, 1, 0, 9, 2, 0, 0, 0, 0],
-#     [8, 0, 2, 7, 0, 0, 5, 0, 0],
-#     [0, 5, 0, 0, 0, 4, 0, 0, 2],
-#     [0, 7, 0, 1, 0, 0, 9, 0, 0],
-#     [0, 0, 6, 0, 0, 0, 3, 0, 0],
-#     [0, 0, 5, 0, 0, 6, 0, 7, 0],
-#     [5, 0, 0, 6, 0, 0, 0, 8, 0],
-#     [0, 0, 3, 0, 0, 9, 6, 0, 7],
-#     [0, 0, 0, 0, 8, 2, 0, 5, 0],
-# ]
 
 
 def generate_variables() -> list:
@@ -151,20 +116,34 @@ def ac3(variables: list) -> bool:
     return True
 
 
-def solver():
+def solver(board: list[list]) -> list[list]:
+    global grid
+    grid = board
+    # return grid
     variables = generate_variables()
     if not ac3(variables):
-        raise Exception("No solution")
+        return None
     result = backtrack(variables)
     if not result:
-        raise Exception("No solution")
+        return None
     for i in variables:
         grid[i.row][i.column] = i.value
+    return grid
 
 
 def main():
-    solver()
-    print(grid)
+    
+    # last = open('test/2/output2.txt', 'r').read()
+    # last = eval(last)
+    print(solver(grid))
+    # print(last==grid)
 
 if __name__ == '__main__':
+    grid = ast.literal_eval(open('tests/input7.txt', 'r').read())
+    grid = [
+[0, 3, 0, 4], 
+[0, 1, 0, 0], 
+[0, 0, 0, 3], 
+[3, 0, 4, 0]
+]
     main()
