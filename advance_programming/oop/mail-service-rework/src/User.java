@@ -1,6 +1,9 @@
-import java.util.List;
-
-public interface User {
-    boolean sendMail(Mail mail);
-    List<Mail> inbox();
+public class User {
+    private final String name;
+    public int allowedEmails;
+    
+    public User(String name, int allowedEmails) {
+        this.name = name;
+        this.allowedEmails = allowedEmails;
+    }
 }

@@ -4,26 +4,28 @@ import java.util.stream.Collectors;
 
 public class MailService {
     private final List<Mail> mails = new ArrayList<>();
+    private final List<User> registerUsers = new ArrayList<>();
     private static final MailService object = new MailService();
     
     private MailService() {
     }
     
-    public List<Mail> getAllMails() {
-        return mails;
+    public boolean checkUser(User user) {
+        return registerUsers.contains(user);
     }
     
-    public List<Mail> getUserMails(User user) {
-        return mails.stream().filter(mail -> mail.getReceiver().equals(user)).collect(Collectors.toList());
+    public List<Mail> getMails(User user) {
+        List<Mail> mailList = mails.stream().filter(mail -> mail.getReceiver().equals(user)).collect(Collectors.toList());
+        mailList.forEach(x -> x.setRead(true));
+        return mailList;
     }
     
-    public boolean sendMail(Mail mail) {
-        if (mail.getSender() instanceof NormalUser &&
-                mail.getReceiver() instanceof SuperUser ||
-                mail.getContent().length() > 255) {
+    public boolean addMail(Mail mail) {
+        if (mail.getContent().length() > 255 || mail.getSender().allowedEmails <= 0) {
             return false;
         }
         mails.add(mail);
+        mail.getSender().allowedEmails--;
         return true;
     }
     
