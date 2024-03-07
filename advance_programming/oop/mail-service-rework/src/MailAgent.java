@@ -1,3 +1,5 @@
+import java.util.stream.Collectors;
+
 public class MailAgent {
     private final User user;
     
@@ -5,7 +7,7 @@ public class MailAgent {
         this.user = user;
     }
     
-    public MailAgent createAgent(User user) {
+    public static MailAgent createAgent(User user) {
         boolean valid = MailService.getObject().checkUser(user);
         if (!valid) {
             return null;
@@ -13,11 +15,12 @@ public class MailAgent {
         return new MailAgent(user);
     }
     
-    public void sendMail(String message, User receiver) {
+    public boolean sendMail(String message, User receiver) {
         Mail mail = new Mail(user, receiver, message);
+        return MailService.getObject().addMail(mail);
     }
     
-    public void receiveMail(Mail mail) {
-        System.out.println(mail);
+    public String receiveMail() {
+        return MailService.getObject().getMails(user).stream().map(Mail::toString).collect(Collectors.joining("\n"));
     }
 }

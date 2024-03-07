@@ -41,4 +41,11 @@ public class Mail {
         if (!Objects.equals(receiver, mail.receiver)) return false;
         return Objects.equals(content, mail.content);
     }
+    
+    @Override
+    public String toString() {
+        return "sender=" + sender.getName() +
+                ", receiver=" + receiver.getName() +
+                ", content=" + content;
+    }
 }

@@ -5,33 +5,36 @@ public class Mail {
     private boolean read = false;
     
     public Mail(User sender, User receiver, String content) {
-        this.sender = sender;
-        this.receiver = receiver;
-        this.content = content;
+        // TODO: Implement
     }
     
     public User getSender() {
-        return sender;
+        // TODO: Implement
     }
     
     public User getReceiver() {
-        return receiver;
+        // TODO: Implement
     }
     
     public String getContent() {
-        return content;
+        // TODO: Implement
     }
     
     public boolean isRead() {
-        return read;
+        // TODO: Implement
     }
     
     public void setRead(boolean read) {
-        this.read = read;
+        // TODO: Implement
     }
     
     @Override
     public boolean equals(Object o) {
+        // TODO: Implement
+    }
+    
+    @Override
+    public String toString() {
         // TODO: Implement
     }
 }

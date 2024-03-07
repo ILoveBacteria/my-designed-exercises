@@ -29,6 +29,14 @@ public class MailService {
         return true;
     }
     
+    public List<User> getRegisterUsers() {
+        return registerUsers;
+    }
+    
+    public List<Mail> getMails() {
+        return mails;
+    }
+    
     public static MailService getObject() {
         return object;
     }

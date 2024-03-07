@@ -6,4 +6,8 @@ public class User {
         this.name = name;
         this.allowedEmails = allowedEmails;
     }
+    
+    public String getName() {
+        return name;
+    }
 }

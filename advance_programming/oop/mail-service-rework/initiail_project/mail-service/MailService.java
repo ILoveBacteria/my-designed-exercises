@@ -3,16 +3,25 @@ import java.util.List;
 
 public class MailService {
     private final List<Mail> mails = new ArrayList<>();
+    private final List<User> registerUsers = new ArrayList<>();
     
-    public List<Mail> getAllMails() {
+    public boolean checkUser(User user) {
         // TODO: Implement
     }
     
-    public List<Mail> getUserMails(User user) {
+    public List<Mail> getMails(User user) {
         // TODO: Implement
     }
     
-    public boolean sendMail(Mail mail) {
+    public boolean addMail(Mail mail) {
+        // TODO: Implement
+    }
+    
+    public List<User> getRegisterUsers() {
+        // TODO: Implement
+    }
+    
+    public List<Mail> getMails() {
         // TODO: Implement
     }
     
