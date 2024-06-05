@@ -40,10 +40,9 @@ public class Main {
     }
     
     private static int countVowelInWord(String word) {
-        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
         int countVowels = 0;
-        for (char vowel : vowels) {
-            if (word.contains(String.valueOf(vowel))) {
+        for (char w : word.toCharArray()) {
+            if (w == 'a' || w == 'e' || w == 'i' || w == 'o' || w == 'u') {
                 countVowels++;
             }
         }
