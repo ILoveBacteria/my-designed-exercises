@@ -1,0 +1,6 @@
+.idea/
+out/
+queraTest/
+*.iml
+src/*Test.java
+data/
